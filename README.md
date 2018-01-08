@@ -82,7 +82,7 @@ terox_subscription:
     default_subscription_strategy: end_last
     default_product_strategy: product.default
 ```
-Read the [complete configuration reference](https://github.com/terox/SubscriptionBundle/master/doc/ReferenceConfig.md)
+Read the [complete configuration reference](https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md)
 
 
 # TODO
