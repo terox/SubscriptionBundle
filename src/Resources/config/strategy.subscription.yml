@@ -1,0 +1,9 @@
+services:
+
+    terox.subscription.strategy.end_last:
+        class: Terox\SubscriptionBundle\Strategy\SubscriptionEndLastStrategy
+        arguments:
+            - "%terox_subscription.config.subscription.class%"
+            - "@terox.subscription.strategy.product.default"
+        tags:
+            - { name: subscription.strategy, type: subscription, strategy: end_last }

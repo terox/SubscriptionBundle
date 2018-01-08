@@ -1,0 +1,49 @@
+{
+    "name": "terox/subscription-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony Bundle for manage user subscriptions",
+    "keywords": [
+        "Subscription",
+        "Subscription Management",
+        "Plans",
+        "Products"
+    ],
+    "homepage": "https://github.com/terox/SubscriptionBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Pérez Terol",
+            "email": "davidtxnet@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "symfony/yaml": "^3.2",
+        "symfony/monolog-bundle": "^3.1",
+        "symfony/framework-bundle": "^3.2",
+        "symfony/console": "^3.2",
+        "symfony/event-dispatcher": "^3.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2",
+        "mockery/mockery": "^0.9.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Terox\\SubscriptionBundle\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Terox\\SubscriptionBundle\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

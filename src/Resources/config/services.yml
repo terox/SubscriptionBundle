@@ -1,0 +1,11 @@
+services:
+    terox.subscription.registry:
+        class: Terox\SubscriptionBundle\Registry\SubscriptionRegistry
+
+    terox.subscription.manager:
+        class: Terox\SubscriptionBundle\Subscription\SubscriptionManager
+        arguments:
+            - "@terox.subscription.registry"
+            - "@terox.subscription.repository.subscription"
+            - "@event_dispatcher"
+            - "%terox_subscription.config%"

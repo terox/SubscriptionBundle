@@ -1,0 +1,13 @@
+services:
+
+    terox.subscription.strategy.product.default:
+        class: Terox\SubscriptionBundle\Strategy\ProductDefaultStrategy
+        arguments:
+            - "@terox.subscription.repository.product"
+            - "@terox.subscription.repository.subscription"
+            - "@logger"
+
+        tags:
+            - { name: subscription.strategy, type: product, strategy: default }
+
+
