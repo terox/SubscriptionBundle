@@ -9,5 +9,3 @@ services:
 
         tags:
             - { name: subscription.strategy, type: product, strategy: default }
-
-
