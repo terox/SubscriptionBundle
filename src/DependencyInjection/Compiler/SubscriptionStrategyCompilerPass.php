@@ -14,7 +14,7 @@ class SubscriptionStrategyCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $factory            = $container->findDefinition('terox.subscription.factory');
+        $factory            = $container->findDefinition('terox.subscription.registry');
         $strategyServiceIds = array_keys($container->findTaggedServiceIds('subscription.strategy'));
 
         // Add subscription strategies to factory instance
