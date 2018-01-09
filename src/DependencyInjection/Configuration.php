@@ -42,11 +42,6 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                     ->defaultValue('end_last')
                 ->end()
-                ->scalarNode('default_product_strategy')
-                    ->isRequired()
-                    ->cannotBeEmpty()
-                    ->defaultValue('product.default')
-                ->end()
 
                 ->arrayNode('reasons')
                     ->children()

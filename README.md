@@ -80,7 +80,6 @@ terox_subscription:
 
     # Configure out-of-the-box strategies
     default_subscription_strategy: end_last
-    default_product_strategy: product.default
 ```
 Read the [complete configuration reference](https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md)
 

@@ -14,7 +14,6 @@ terox_subscription:
 
     # The strategy tag name
     default_subscription_strategy: end_last
-    default_product_strategy: product.default
     
     # You can change the default message when a subscription change his state
     reasons:
