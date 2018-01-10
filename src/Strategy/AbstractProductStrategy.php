@@ -69,7 +69,14 @@ abstract class AbstractProductStrategy implements ProductStrategyInterface
         return $this->logger;
     }
 
-    public final function checkProductIntegrity(ProductInterface $product)
+    /**
+     * Check the product model integrity.
+     *
+     * @param ProductInterface $product
+     *
+     * @throws ProductIntegrityException
+     */
+    final public function checkProductIntegrity(ProductInterface $product)
     {
         if($product->isDefault() && null !== $product->getQuota()) {
 
@@ -92,19 +99,35 @@ abstract class AbstractProductStrategy implements ProductStrategyInterface
         }
     }
 
+    /**
+     * Check product expiration.
+     *
+     * @param ProductInterface $product
+     *
+     * @throws ProductExpiredException
+     */
     public function checkExpiration(ProductInterface $product)
     {
-        if (new \DateTime() <= $product->getExpirationDate() || null === $product->getExpirationDate()) {
+        $expirationDate = $product->getExpirationDate();
+
+        if (new \DateTime() <= $expirationDate || null === $expirationDate) {
             return;
         }
 
         throw new ProductExpiredException(sprintf(
             'The product "%s" has been expired at %s.',
             $product->getName(),
-            $product->getExpirationDate()->format('Y-m-d H:i:s')
+            $expirationDate->format('Y-m-d H:i:s')
         ));
     }
 
+    /**
+     * Check product quote.
+     *
+     * @param ProductInterface $product
+     *
+     * @throws ProductQuoteExceededException
+     */
     public function checkQuote(ProductInterface $product)
     {
         // Unlimited quote

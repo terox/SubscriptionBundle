@@ -2,6 +2,8 @@
 
 namespace Terox\SubscriptionBundle\Model;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * SubscriptionInterface
  *
@@ -9,12 +11,12 @@ namespace Terox\SubscriptionBundle\Model;
 interface SubscriptionInterface
 {
     /**
-     * @return object
+     * @return UserInterface
      */
     public function getUser();
 
     /**
-     * @param object $user
+     * @param UserInterface $user
      *
      * @return SubscriptionInterface
      */

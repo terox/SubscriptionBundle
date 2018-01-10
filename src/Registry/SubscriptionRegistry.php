@@ -2,6 +2,7 @@
 
 namespace Terox\SubscriptionBundle\Registry;
 
+use Psr\Log\InvalidArgumentException;
 use Terox\SubscriptionBundle\Exception\StrategyNotFoundException;
 use Terox\SubscriptionBundle\Strategy\SubscriptionStrategyInterface;
 
@@ -32,6 +33,8 @@ class SubscriptionRegistry
      * @param string                        $name
      *
      * @return SubscriptionRegistry
+     *
+     * @throws \InvalidArgumentException
      */
     public function addStrategy(SubscriptionStrategyInterface $strategy, $name)
     {

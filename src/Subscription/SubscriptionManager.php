@@ -4,6 +4,9 @@ namespace Terox\SubscriptionBundle\Subscription;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Terox\SubscriptionBundle\Event\SubscriptionEvent;
+use Terox\SubscriptionBundle\Exception\PermanentSubscriptionException;
+use Terox\SubscriptionBundle\Exception\ProductDefaultNotFoundException;
+use Terox\SubscriptionBundle\Exception\StrategyNotFoundException;
 use Terox\SubscriptionBundle\Exception\SubscriptionRenewalException;
 use Terox\SubscriptionBundle\Exception\SubscriptionStatusException;
 use Terox\SubscriptionBundle\Exception\SubscriptionIntegrityException;
@@ -62,15 +65,19 @@ class SubscriptionManager
      * @param string           $strategyName
      *
      * @return SubscriptionInterface
+     *
+     * @throws StrategyNotFoundException
+     * @throws SubscriptionIntegrityException
+     * @throws PermanentSubscriptionException
      */
     public function create(ProductInterface $product, $strategyName = null)
     {
         // Get strategy
-        $strategyName = is_null($strategyName) ? $this->config['default_subscription_strategy'] : $strategyName;
+        $strategyName = null === $strategyName ? $this->config['default_subscription_strategy'] : $strategyName;
         $strategy     = $this->registry->get($strategyName);
 
         // Get current enabled subscriptions of product
-        $subscriptions = $this->subscriptionRepository->findByProduct($product, true);
+        $subscriptions = $this->subscriptionRepository->findByProduct($product);
 
         // Check that subscriptions collection are a valid objects
         foreach($subscriptions as $activeSubscription) {
@@ -88,6 +95,10 @@ class SubscriptionManager
      *
      * @param SubscriptionInterface $subscription
      * @param boolean               $isRenew
+     *
+     * @throws SubscriptionIntegrityException
+     * @throws SubscriptionStatusException
+     * @throws ProductDefaultNotFoundException
      */
     public function activate(SubscriptionInterface $subscription, $isRenew = false)
     {
@@ -110,6 +121,13 @@ class SubscriptionManager
      * @param SubscriptionInterface $subscription
      *
      * @return SubscriptionInterface New
+     *
+     * @throws SubscriptionIntegrityException
+     * @throws SubscriptionRenewalException
+     * @throws ProductDefaultNotFoundException
+     * @throws StrategyNotFoundException
+     * @throws PermanentSubscriptionException
+     * @throws SubscriptionStatusException
      */
     public function renew(SubscriptionInterface $subscription)
     {
@@ -191,6 +209,8 @@ class SubscriptionManager
      * @param SubscriptionInterface $subscription
      *
      * @return SubscriptionStrategyInterface
+     *
+     * @throws StrategyNotFoundException
      */
     private function getStrategyFromSubscription(SubscriptionInterface $subscription)
     {
@@ -208,12 +228,12 @@ class SubscriptionManager
      */
     private function checkSubscriptionIntegrity(SubscriptionInterface $subscription)
     {
-        if (empty($subscription->getProduct())) {
-            throw new SubscriptionIntegrityException("Subscription must have a product defined.");
+        if (null === $subscription->getProduct()) {
+            throw new SubscriptionIntegrityException('Subscription must have a product defined.');
         }
 
-        if (empty($subscription->getUser())) {
-            throw new SubscriptionIntegrityException("Subscription must have a user defined.");
+        if (null === $subscription->getUser()) {
+            throw new SubscriptionIntegrityException('Subscription must have a user defined.');
         }
     }
 

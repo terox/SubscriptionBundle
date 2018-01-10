@@ -2,6 +2,7 @@
 
 namespace Terox\SubscriptionBundle\Strategy;
 
+use Terox\SubscriptionBundle\Exception\ProductDefaultNotFoundException;
 use Terox\SubscriptionBundle\Model\ProductInterface;
 
 interface ProductStrategyInterface
@@ -14,6 +15,8 @@ interface ProductStrategyInterface
      * @param ProductInterface $product
      *
      * @return ProductInterface
+     *
+     * @throws ProductDefaultNotFoundException
      */
     public function getFinalProduct(ProductInterface $product);
 }

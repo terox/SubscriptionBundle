@@ -2,6 +2,7 @@
 
 namespace Terox\SubscriptionBundle\Strategy;
 
+use Terox\SubscriptionBundle\Exception\PermanentSubscriptionException;
 use Terox\SubscriptionBundle\Model\ProductInterface;
 use Terox\SubscriptionBundle\Model\SubscriptionInterface;
 
@@ -12,6 +13,8 @@ interface SubscriptionStrategyInterface
      * @param SubscriptionInterface[] $subscriptions Enabled subscriptions
      *
      * @return SubscriptionInterface
+     *
+     * @throws PermanentSubscriptionException
      */
     public function createSubscription(ProductInterface $product, array $subscriptions = []);
 
