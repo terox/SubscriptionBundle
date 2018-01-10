@@ -20,7 +20,7 @@ interface SubscriptionInterface
      *
      * @return SubscriptionInterface
      */
-    public function setUser($user);
+    public function setUser(UserInterface $user);
 
     /**
      * @return \DateTimeImmutable
