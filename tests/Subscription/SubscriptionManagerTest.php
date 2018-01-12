@@ -133,9 +133,6 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
         $this->subscriptionManager->create($this->product, 'end_last');
     }
 
-
-
-
     public function testActivateSubscriptionWithValidProduct()
     {
         $subscription = new SubscriptionMock();
