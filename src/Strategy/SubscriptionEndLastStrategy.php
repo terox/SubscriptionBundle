@@ -71,7 +71,8 @@ class SubscriptionEndLastStrategy extends AbstractSubscriptionStrategy
      */
     private function create($startDate, $product)
     {
-        $endDate = $startDate->modify(sprintf('+%s seconds', $product->getDuration()));
+        $endDate = null !== $product->getDuration() ?
+            $startDate->modify(sprintf('+%s seconds', $product->getDuration())) : null;
 
         // Create the new subscription
         $subscription = $this->createSubscriptionInstance();

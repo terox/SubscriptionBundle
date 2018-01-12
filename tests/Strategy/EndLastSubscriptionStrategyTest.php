@@ -68,6 +68,19 @@ class EndLastSubscriptionStrategyTest extends AbstractTestCaseBase
         );
     }
 
+    public function testCreatePermanentSubscriptionOnNoActiveSubscriptions()
+    {
+        // Product
+        $product = \Mockery::mock(ProductInterface::class);
+        $product->shouldReceive('isAutoRenewal')->andReturn(false);
+        $product->shouldReceive('getDuration')->andReturn(null);
+
+        $strategy = new SubscriptionEndLastStrategy(SubscriptionMock::class, $this->defaultProductStrategy);
+        $subscription = $strategy->createSubscription($product);
+
+        $this->assertEquals(null, $subscription->getEndDate());
+    }
+
     public function testFailOnMoreThanOnePermanentSubscriptionByProduct()
     {
         $this->expectException(PermanentSubscriptionException::class);
