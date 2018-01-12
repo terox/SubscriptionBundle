@@ -198,12 +198,27 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
         $this->assertEquals($productQuota, $subscription->getProduct());
     }
 
+    public function testRenewPermanentSubscriptionFail()
+    {
+        $subscription = new SubscriptionMock();
+        $subscription->setActive(true);
+        $subscription->setProduct($this->product);
+        $subscription->setAutoRenewal(false);
+        $subscription->setEndDate(null);
+
+        $this->expectException(SubscriptionRenewalException::class);
+        $this->expectExceptionMessage('A permanent subscription can not be renewed.');
+
+        $this->subscriptionManager->renew($subscription);
+    }
+
     public function testRenewSubscriptionNotEnabledAtSubscription()
     {
         $subscription = new SubscriptionMock();
         $subscription->setActive(true);
         $subscription->setProduct($this->product);
         $subscription->setAutoRenewal(false);
+        $subscription->setEndDate(new \DateTimeImmutable());
 
         $this->expectException(SubscriptionRenewalException::class);
         $this->expectExceptionMessage('The current subscription is not auto-renewal.');
@@ -217,6 +232,7 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
         $subscription->setActive(true);
         $subscription->setProduct($this->product);
         $subscription->setAutoRenewal(true);
+        $subscription->setEndDate(new \DateTimeImmutable());
 
         $this->expectException(SubscriptionRenewalException::class);
         $this->expectExceptionMessage('The product "'.$this->product->getName().'" is not auto-renewal. Maybe is disabled?');
@@ -242,6 +258,7 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
         $subscription->setActive(true);
         $subscription->setProduct($product);
         $subscription->setAutoRenewal(true);
+        $subscription->setEndDate(new \DateTimeImmutable());
 
         // No current active subscriptions
         $this->subscriptionRepository->shouldReceive('findByProduct')->andReturn([]);
@@ -275,6 +292,7 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
         $subscription->setActive(true);
         $subscription->setProduct($product);
         $subscription->setAutoRenewal(true);
+        $subscription->setEndDate(new \DateTimeImmutable());
 
         // No current active subscriptions
         $this->subscriptionRepository->shouldReceive('findByProduct')->andReturn([]);
@@ -311,6 +329,7 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
         $subscription->setActive(true);
         $subscription->setProduct($product);
         $subscription->setAutoRenewal(true);
+        $subscription->setEndDate(new \DateTimeImmutable());
 
         // No current active subscriptions
         $this->subscriptionRepository->shouldReceive('findByProduct')->andReturn([]);
