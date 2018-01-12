@@ -44,6 +44,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
 
                 ->arrayNode('reasons')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('renew')
                             ->defaultValue('Subscription expired and auto-renewal')
