@@ -4,6 +4,7 @@ services:
 
     terox.subscription.manager:
         class: Terox\SubscriptionBundle\Subscription\SubscriptionManager
+        public: true
         arguments:
             - "@terox.subscription.registry"
             - "@terox.subscription.repository.subscription"
