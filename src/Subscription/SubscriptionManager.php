@@ -246,6 +246,10 @@ class SubscriptionManager
      */
     private function checkSubscriptionRenewable(SubscriptionInterface $subscription)
     {
+        if(null === $subscription->getEndDate()) {
+            throw new SubscriptionRenewalException('A permanent subscription can not be renewed.');
+        }
+
         if (!$subscription->isAutoRenewal()) {
             throw new SubscriptionRenewalException('The current subscription is not auto-renewal.');
         }
