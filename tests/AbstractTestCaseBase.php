@@ -14,6 +14,7 @@ use Terox\SubscriptionBundle\Strategy\ProductStrategyInterface;
 use Terox\SubscriptionBundle\Strategy\SubscriptionEndLastStrategy;
 use Terox\SubscriptionBundle\Registry\SubscriptionRegistry;
 use Terox\SubscriptionBundle\Tests\Mock\SubscriptionMock;
+use Terox\SubscriptionBundle\Tests\Mock\UserMock;
 
 abstract class AbstractTestCaseBase extends TestCase
 {
@@ -76,22 +77,22 @@ abstract class AbstractTestCaseBase extends TestCase
         $this->subscription1EndDate = new \DateTimeImmutable('+10 days');
         $this->currentSubscription1 = \Mockery::mock(SubscriptionInterface::class);
         $this->currentSubscription1->shouldReceive('getEndDate')->andReturn($this->subscription1EndDate);
-        $this->currentSubscription1->shouldReceive('getUser')->andReturn(new \stdClass());
+        $this->currentSubscription1->shouldReceive('getUser')->andReturn(new UserMock());
         $this->currentSubscription1->shouldReceive('setStrategy');
 
         $this->currentSubscription2 = \Mockery::mock(SubscriptionInterface::class);
         $this->currentSubscription2->shouldReceive('getEndDate')->andReturn($this->subscription1EndDate->modify('+5 days'));
-        $this->currentSubscription2->shouldReceive('getUser')->andReturn(new \stdClass());
+        $this->currentSubscription2->shouldReceive('getUser')->andReturn(new UserMock());
         $this->currentSubscription2->shouldReceive('setStrategy');
 
         $this->currentSubscription3 = \Mockery::mock(SubscriptionInterface::class);
         $this->currentSubscription3->shouldReceive('getEndDate')->andReturn($this->subscription1EndDate->modify('+10 days'));
-        $this->currentSubscription3->shouldReceive('getUser')->andReturn(new \stdClass());
+        $this->currentSubscription3->shouldReceive('getUser')->andReturn(new UserMock());
         $this->currentSubscription3->shouldReceive('setStrategy');
 
         $this->permanentSubscription = \Mockery::mock(SubscriptionInterface::class);
         $this->permanentSubscription->shouldReceive('getEndDate')->andReturn(null);
-        $this->permanentSubscription->shouldReceive('getUser')->andReturn(new \stdClass());
+        $this->permanentSubscription->shouldReceive('getUser')->andReturn(new UserMock());
         $this->permanentSubscription->shouldReceive('setStrategy');
 
         // Default Product Strategy

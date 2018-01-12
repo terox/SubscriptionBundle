@@ -2,6 +2,7 @@
 
 namespace Terox\SubscriptionBundle\Tests\Mock;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Terox\SubscriptionBundle\Model\ProductInterface;
 use Terox\SubscriptionBundle\Model\SubscriptionInterface;
 
@@ -27,7 +28,7 @@ class SubscriptionMock implements SubscriptionInterface
     {
         $this->setActive(false);
         $this->setAutoRenewal(false);
-        $this->setUser(new \stdClass());
+        $this->setUser(new UserMock());
         $this->setStrategy('end_last'); // By default, only in this mock
     }
 
@@ -42,7 +43,7 @@ class SubscriptionMock implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function setUser($user)
+    public function setUser(UserInterface $user)
     {
         $this->user = $user;
 

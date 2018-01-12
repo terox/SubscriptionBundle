@@ -12,6 +12,7 @@ use Terox\SubscriptionBundle\Registry\SubscriptionRegistry;
 use Terox\SubscriptionBundle\Subscription\SubscriptionManager;
 use Terox\SubscriptionBundle\Tests\AbstractTestCaseBase;
 use Terox\SubscriptionBundle\Tests\Mock\SubscriptionMock;
+use Terox\SubscriptionBundle\Tests\Mock\UserMock;
 
 class SubscriptionManagerTest extends AbstractTestCaseBase
 {
@@ -80,7 +81,7 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
     {
         $this->currentSubscription2->shouldReceive('getProduct')->andReturn($this->product);
         $this->currentSubscription3->shouldReceive('getProduct')->andReturn($this->product);
-        $this->currentSubscription3->shouldReceive('getUser')->andReturn(new \stdClass());
+        $this->currentSubscription3->shouldReceive('getUser')->andReturn(new UserMock());
 
         $this->subscriptionRepository->shouldReceive('findByProduct')->andReturn([
             $this->currentSubscription2,
@@ -140,7 +141,6 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
         $subscription = new SubscriptionMock();
         $subscription->setActive(false);
         $subscription->setProduct($this->product);
-        $subscription->setUser(new \stdClass());
 
         $this->subscriptionManager->activate($subscription);
 
