@@ -21,6 +21,10 @@ class SubscriptionStrategyCompilerPass implements CompilerPassInterface
             $strategy = $container->findDefinition($strategyServiceId);
             $tag      = $strategy->getTag('subscription.strategy');
 
+            if('subscription' !== $tag[0]['type']) {
+                continue;
+            }
+
             $factory->addMethodCall('addStrategy', [ new Reference($strategyServiceId), $tag[0]['strategy'] ]);
         }
     }
