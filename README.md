@@ -36,7 +36,7 @@ Documentation
             * End Last Strategy
 
 * CookBooks/Examples:
-    * [https://github.com/terox/sf4-subscription-example](Symfony 4 example) with doctrine
+    * [Symfony 4 example](https://github.com/terox/sf4-subscription-example) with doctrine
 
 Quick start
 -----------
