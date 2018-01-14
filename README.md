@@ -16,24 +16,27 @@ and solid base where start to handle this type of products in your Symfony appli
  a subscription should be handled to fit to your requirements.
 
 **Requeriments**
- * Symfony 3.x applications
+ * Symfony 3.3+ applications
  
 Documentation
 -------------
-* [Installation](#installation)
+* [Quick Start](#quick-start)
 * The lifecycle of a subscription
 * Strategies
-** Product strategies
-*** How to create a product strategy
-*** Out-of-the-box strategies
-**** Default product strategy
-** Subscription strategies
-*** How to create a subscription strategy
-*** Out-of-the-box strategies:
-**** End Last Strategy
+    * Product strategies:
+        * What is a product strategy
+        * How to create a product strategy
+        * Out-of-the-box strategies
+            * Default product strategy
+            
+    * Subscription strategies:
+        * What is a subscription strategy
+        * How to create a subscription strategy
+        * Out-of-the-box strategies:
+            * End Last Strategy
 
-* CookBooks
-** Using into Doctrine based applications
+* CookBooks/Examples:
+    * [https://github.com/terox/sf4-subscription-example](Symfony 4 example) with doctrine
 
 Quick start
 -----------
@@ -44,7 +47,7 @@ Quick start
 $ composer require terox/subscription-bundle
 ```
 
-### 2. Enable the bundle in Symfony Application:
+### 2. Enable the bundle in Symfony Application (only Symfony 3):
 
 ```php
 <?php
@@ -81,14 +84,14 @@ terox_subscription:
     # Configure out-of-the-box strategies
     default_subscription_strategy: end_last
 ```
-Read the [complete configuration reference](https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md)
-
-
-# TODO
-- product strategy
-- only one subscription per product
+Read the [complete configuration reference](https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md) for more configuration options or tweaks.
 
 License
 -------
 
 This software is published under the [MIT License](https://github.com/terox/SubscriptionBundle/master/LICENSE.md)
+
+Contributing
+------------
+
+I will be very happy if you want to contribute fixing some issue, providing new strategies or whatever you want. Thanks!
