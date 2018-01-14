@@ -110,7 +110,7 @@ abstract class AbstractProductStrategy implements ProductStrategyInterface
     {
         $expirationDate = $product->getExpirationDate();
 
-        if (new \DateTime() <= $expirationDate || null === $expirationDate) {
+        if (null === $expirationDate || new \DateTime() <= $expirationDate) {
             return;
         }
 
