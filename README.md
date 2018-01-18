@@ -1,13 +1,13 @@
 SubscriptionBundle
 ==================
 
-<img src="https://raw.githubusercontent.com/terox/SubscriptionBundle/master/doc/images/SubscriptionBundleLogo.png" alt="SubscriptionBundleLogo" align="right">
+<img src="https://raw.githubusercontent.com/terox/SubscriptionBundle/master/doc/images/SubscriptionBundleLogo.png" alt="SubscriptionBundleLogo" width="242" height="212" align="right">
 
 > SubscriptionBundle helps you to create and manage subscriptions services (also known as plans) for your users in your application.
 
 The SubscriptionBundle fits perfectly in your Symfony application and your models. It don't cares about what persistence
 layer are you using (a [http://www.doctrine-orm.org](Doctrine), [http://www.redis.io](Redis)...); it only provides an easy 
-and solid base where start to handle this type of products in your Symfony application.
+and solid base where start to handle this type of products in your Symfony applications.
 
 **Features**
  * Trying to maintain a easy, solid, well-documented and **agnostic** base to start to work without headaches.
@@ -15,28 +15,29 @@ and solid base where start to handle this type of products in your Symfony appli
  * **Extensible**: you can extend and change the out-of-the-box features creating your own strategies that determine how 
  a subscription should be handled to fit to your requirements.
 
-**Requeriments**
- * Symfony 3.3+ applications
+**Compatible**
+ * Symfony 3.3+/4+ applications with Doctrine
  
 Documentation
 -------------
+
 * [Quick Start](#quick-start)
-* The lifecycle of a subscription
+* [https://github.com/terox/SubscriptionBundle/blob/master/doc/Guide.md](Guide)
 * Strategies
     * Product strategies:
-        * What is a product strategy
-        * How to create a product strategy
-        * Out-of-the-box strategies
-            * Default product strategy
+        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsProductStrategy.md](What is a product strategy)
+        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateAProductStrategy.md](How to create a product strategy)
+        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/product](Out-of-the-box strategies):
+            * [https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/product/DefaultStrategy.md](Default product strategy)
             
     * Subscription strategies:
-        * What is a subscription strategy
-        * How to create a subscription strategy
-        * Out-of-the-box strategies:
-            * End Last Strategy
+        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsAProductStrategy.md](What is a subscription strategy)
+        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateASubscriptionStrategy.md](How to create a subscription strategy)
+        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription](Out-of-the-box strategies):
+            * [https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md](End Last Strategy)
 
 * CookBooks/Examples:
-    * [Symfony 4 example](https://github.com/terox/sf4-subscription-example) with doctrine
+    * [Symfony 4 example sandbox](https://github.com/terox/sf4-subscription-example) with doctrine
 
 Quick start
 -----------
