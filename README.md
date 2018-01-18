@@ -34,7 +34,7 @@ Documentation
         * [What is a subscription strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsAProductStrategy.md)
         * [How to create a subscription strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateASubscriptionStrategy.md)
         * [Out-of-the-box strategies](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription):
-            * [End Last Strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md)
+            * [End Last Strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLastStrategy.md)
 
 * CookBooks/Examples:
     * [Symfony 4 example sandbox](https://github.com/terox/sf4-subscription-example) with doctrine
