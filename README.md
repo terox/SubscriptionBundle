@@ -25,7 +25,7 @@ Documentation
 * [https://github.com/terox/SubscriptionBundle/blob/master/doc/Guide.md](Guide)
 * Strategies
     * Product strategies:
-        * [What is a product strategy](Whttps://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsProductStrategy.md)
+        * [What is a product strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsProductStrategy.md)
         * [How to create a product strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateAProductStrategy.md])
         * [Out-of-the-box strategies](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/product):
             * [Default product strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/product/DefaultStrategy.md)
