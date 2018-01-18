@@ -22,7 +22,7 @@ Documentation
 -------------
 
 * [Quick Start](#quick-start)
-* [https://github.com/terox/SubscriptionBundle/blob/master/doc/Guide.md](Guide)
+* [Guide](https://github.com/terox/SubscriptionBundle/blob/master/doc/Guide.md)
 * Strategies
     * Product strategies:
         * [What is a product strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsProductStrategy.md)

@@ -44,7 +44,7 @@ class MyProductStrategy extends AbstractSubscriptionStrategy
 }
 ````
 #### 📌 Tips:
-* Review the **[end_last](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md)** strategy if your need help.
+* Review the **[end_last](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLastStrategy.md)** strategy if your need help.
 
 #### ❗ Remember:
 * Use in your subscription model the next interface: ***Terox\SubscriptionBundle\Model\SubscriptionInterface***.
