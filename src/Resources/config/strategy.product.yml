@@ -1,11 +1,14 @@
 services:
-
-    terox.subscription.strategy.product.default:
-        class: Terox\SubscriptionBundle\Strategy\ProductDefaultStrategy
+    terox.subscription.strategy.product.abstract:
+        class: Terox\SubscriptionBundle\Strategy\AbstractProductStrategy
+        abstract: true
         arguments:
             - "@terox.subscription.repository.product"
             - "@terox.subscription.repository.subscription"
             - "@logger"
 
+    terox.subscription.strategy.product.default:
+        class: Terox\SubscriptionBundle\Strategy\ProductDefaultStrategy
+        parent: terox.subscription.strategy.product.abstract
         tags:
             - { name: subscription.strategy, type: product, strategy: default }
