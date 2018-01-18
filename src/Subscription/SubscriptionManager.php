@@ -97,6 +97,7 @@ class SubscriptionManager
      * @param boolean               $isRenew
      *
      * @throws SubscriptionIntegrityException
+     * @throws StrategyNotFoundException
      * @throws SubscriptionStatusException
      * @throws ProductDefaultNotFoundException
      */
