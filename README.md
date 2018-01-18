@@ -25,16 +25,16 @@ Documentation
 * [https://github.com/terox/SubscriptionBundle/blob/master/doc/Guide.md](Guide)
 * Strategies
     * Product strategies:
-        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsProductStrategy.md](What is a product strategy)
-        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateAProductStrategy.md](How to create a product strategy)
-        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/product](Out-of-the-box strategies):
-            * [https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/product/DefaultStrategy.md](Default product strategy)
+        * [What is a product strategy](Whttps://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsProductStrategy.md)
+        * [How to create a product strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateAProductStrategy.md])
+        * [Out-of-the-box strategies](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/product):
+            * [Default product strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/product/DefaultStrategy.md)
             
     * Subscription strategies:
-        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsAProductStrategy.md](What is a subscription strategy)
-        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateASubscriptionStrategy.md](How to create a subscription strategy)
-        * [https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription](Out-of-the-box strategies):
-            * [https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md](End Last Strategy)
+        * [What is a subscription strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/WhatIsAProductStrategy.md)
+        * [How to create a subscription strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateASubscriptionStrategy.md)
+        * [Out-of-the-box strategies](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription):
+            * [End Last Strategy](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md)
 
 * CookBooks/Examples:
     * [Symfony 4 example sandbox](https://github.com/terox/sf4-subscription-example) with doctrine

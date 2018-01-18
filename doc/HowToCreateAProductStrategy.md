@@ -46,7 +46,7 @@ class MyProductStrategy extends AbstractProductStrategy
 * Use in your product model the next interface: ***Terox\SubscriptionBundle\Model\ProductInterface***.
 * Use in your repositories the next interface: ***Terox\SubscriptionBundle\Repository\ProductRepositoryInterface***.
 
-Both classes must be [https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md](configurated).
+Both classes must be [configurated](https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md).
 
 ### Declare the strategy into container:
 

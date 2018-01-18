@@ -10,5 +10,5 @@ like:
 * What happens if the user has a permanent subscription active?
 * And more related questions...
 
-The bundle comes with **[https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md](end_last)**
-strategy by default. It handle the most common cases, but you can create you own strategy [https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateASubscriptionStrategy.md](following this guide).
+The bundle comes with **[end_last](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md)**
+strategy by default. It handle the most common cases, but you can create you own strategy [following this guide](https://github.com/terox/SubscriptionBundle/blob/master/doc/HowToCreateASubscriptionStrategy.md).

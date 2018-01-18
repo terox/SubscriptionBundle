@@ -44,13 +44,13 @@ class MyProductStrategy extends AbstractSubscriptionStrategy
 }
 ````
 #### 📌 Tips:
-* Review the **[https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md](end_last)** strategy if your need help.
+* Review the **[end_last](https://github.com/terox/SubscriptionBundle/blob/master/doc/strategies/subscription/EndLast.md)** strategy if your need help.
 
 #### ❗ Remember:
 * Use in your subscription model the next interface: ***Terox\SubscriptionBundle\Model\SubscriptionInterface***.
 * Use in your repositories the next interface: ***Terox\SubscriptionBundle\Repository\SubscriptionRepositoryInterface***.
 
-Both classes must be [https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md](configurated).
+Both classes must be [configurated](https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md).
 
 ### Declare the strategy into container:
 
