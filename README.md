@@ -1,4 +1,5 @@
 SubscriptionBundle
+[![Build Status](https://travis-ci.org/terox/SubscriptionBundle.svg?branch=master)](https://travis-ci.org/terox/SubscriptionBundle)
 ==================
 
 <img src="https://raw.githubusercontent.com/terox/SubscriptionBundle/master/doc/images/SubscriptionBundleLogo.png" alt="SubscriptionBundleLogo" width="242" height="212" align="right">

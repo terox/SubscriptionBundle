@@ -1,0 +1,26 @@
+language: php
+sudo: false
+
+php:
+  - 7.0
+  - 7.1
+  
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+matrix:
+  fast_finish: true
+
+before_install:
+  - composer selfupdate
+
+install:
+  - export COMPOSER_ROOT_VERSION=dev-master
+  - if [ "$DEPENDENCIES" == "dev" ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
+  - if [ "$DEPENDENCIES" != "low" ]; then composer update; fi;
+  - if [ "$DEPENDENCIES" == "low" ]; then composer update --prefer-lowest; fi;
+
+script:
+   - ./vendor/bin/phpunit
+   
