@@ -4,3 +4,4 @@ build/
 .php_cs.cache
 phpunit.xml
 composer.lock
+clover.xml
