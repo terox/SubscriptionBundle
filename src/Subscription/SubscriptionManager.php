@@ -61,8 +61,8 @@ class SubscriptionManager
     /**
      * Create a new subscription with a determinate strategy.
      *
-     * @param ProductInterface $product
-     * @param string           $strategyName
+     * @param ProductInterface $product      Product that you want associate with subscription
+     * @param string           $strategyName If you keep this null it will use product default strategy
      *
      * @return SubscriptionInterface
      *
@@ -73,7 +73,7 @@ class SubscriptionManager
     public function create(ProductInterface $product, $strategyName = null)
     {
         // Get strategy
-        $strategyName = null === $strategyName ? $this->config['default_subscription_strategy'] : $strategyName;
+        $strategyName = $strategyName ?? $product->getStrategyCodeName();
         $strategy     = $this->registry->get($strategyName);
 
         // Get current enabled subscriptions of product

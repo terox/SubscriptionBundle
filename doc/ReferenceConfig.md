@@ -11,9 +11,6 @@ terox_subscription:
     # Remember that repositories must be implement the interfaces
     subscription_repository: app.repository.subscription # Interface: Terox\SubscriptionBundle\Repository\SubscriptionRepositoryInterface
     product_repository: app.repository.product           # Interface: Terox\SubscriptionBundle\Repository\ProductRepositoryInterface
-
-    # The strategy tag name
-    default_subscription_strategy: end_last
     
     # You can change the default message when a subscription change his state
     reasons:

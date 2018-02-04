@@ -49,7 +49,6 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
 
         // Manager
         $this->subscriptionManager = new SubscriptionManager($registry, $this->subscriptionRepository, $eventDispatcher, [
-            'default_subscription_strategy' => 'end_last',
             'reasons' => [
                 'expire'  => 'EXPIRE_TEXT',
                 'disable' => 'DISABLE_TEXT',

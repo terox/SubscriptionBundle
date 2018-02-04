@@ -82,9 +82,6 @@ terox_subscription:
     # Remember that repositories must be implement the interfaces
     subscription_repository: app.repository.subscription # Interface: Terox\SubscriptionBundle\Repository\SubscriptionRepositoryInterface
     product_repository: app.repository.product           # Interface: Terox\SubscriptionBundle\Repository\ProductRepositoryInterface
-
-    # Configure out-of-the-box strategies
-    default_subscription_strategy: end_last
 ```
 Read the [complete configuration reference](https://github.com/terox/SubscriptionBundle/blob/master/doc/ReferenceConfig.md) for more configuration options or tweaks.
 
