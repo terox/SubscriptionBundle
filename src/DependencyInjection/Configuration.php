@@ -37,12 +37,6 @@ class Configuration implements ConfigurationInterface
                     ->cannotBeEmpty()
                 ->end()
 
-                ->scalarNode('default_subscription_strategy')
-                    ->isRequired()
-                    ->cannotBeEmpty()
-                    ->defaultValue('end_last')
-                ->end()
-
                 ->arrayNode('reasons')
                     ->addDefaultsIfNotSet()
                     ->children()
