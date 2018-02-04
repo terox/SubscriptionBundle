@@ -1,5 +1,7 @@
 SubscriptionBundle
 [![Build Status](https://travis-ci.org/terox/SubscriptionBundle.svg?branch=master)](https://travis-ci.org/terox/SubscriptionBundle)
+[![Code Coverage](https://scrutinizer-ci.com/g/terox/SubscriptionBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/terox/SubscriptionBundle/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/terox/SubscriptionBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/terox/SubscriptionBundle/?branch=master)
 ==================
 
 <img src="https://raw.githubusercontent.com/terox/SubscriptionBundle/master/doc/images/SubscriptionBundleLogo.png" alt="SubscriptionBundleLogo" width="242" height="212" align="right">
