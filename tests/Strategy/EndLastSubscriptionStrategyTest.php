@@ -34,7 +34,7 @@ class EndLastSubscriptionStrategyTest extends AbstractTestCaseBase
 
         // Strategy
         $strategy     = new SubscriptionEndLastStrategy(SubscriptionMock::class, $this->defaultProductStrategy);
-        $subscription = $strategy->createSubscription($product, [ $subscription1 ]);
+        $subscription = $strategy->createSubscription($product, [$subscription1]);
 
         $this->assertEquals($currentDate->getTimestamp(), $subscription->getStartDate()->getTimestamp());
         $this->assertEquals(
@@ -59,7 +59,7 @@ class EndLastSubscriptionStrategyTest extends AbstractTestCaseBase
 
         // Strategy
         $strategy     = new SubscriptionEndLastStrategy(SubscriptionMock::class, $this->defaultProductStrategy);
-        $subscription = $strategy->createSubscription($product, [ $subscription1 ]);
+        $subscription = $strategy->createSubscription($product, [$subscription1]);
 
         $this->assertEquals($currentDate->modify('+5 days')->getTimestamp(), $subscription->getStartDate()->getTimestamp());
         $this->assertEquals(
@@ -75,7 +75,7 @@ class EndLastSubscriptionStrategyTest extends AbstractTestCaseBase
         $product->shouldReceive('isAutoRenewal')->andReturn(false);
         $product->shouldReceive('getDuration')->andReturn(null);
 
-        $strategy = new SubscriptionEndLastStrategy(SubscriptionMock::class, $this->defaultProductStrategy);
+        $strategy     = new SubscriptionEndLastStrategy(SubscriptionMock::class, $this->defaultProductStrategy);
         $subscription = $strategy->createSubscription($product);
 
         $this->assertEquals(null, $subscription->getEndDate());
@@ -97,7 +97,7 @@ class EndLastSubscriptionStrategyTest extends AbstractTestCaseBase
         $subscription2->shouldReceive('getEndDate')->andReturn(null);
 
         $strategy = new SubscriptionEndLastStrategy(SubscriptionMock::class, $this->defaultProductStrategy);
-        $strategy->createSubscription($this->product, [ $subscription1, $subscription2 ]);
+        $strategy->createSubscription($this->product, [$subscription1, $subscription2]);
     }
 
     public function testReturnSameSubscriptionInstanceOnPermanentSubscription()
@@ -111,8 +111,8 @@ class EndLastSubscriptionStrategyTest extends AbstractTestCaseBase
         $subscription1->shouldReceive('getProduct')->andReturn($productX);
         $subscription1->shouldReceive('getEndDate')->andReturn(null);
 
-        $strategy = new SubscriptionEndLastStrategy(SubscriptionMock::class, $this->defaultProductStrategy);
-        $subscription = $strategy->createSubscription($this->product, [ $subscription1 ]);
+        $strategy     = new SubscriptionEndLastStrategy(SubscriptionMock::class, $this->defaultProductStrategy);
+        $subscription = $strategy->createSubscription($this->product, [$subscription1]);
 
         $this->assertEquals($subscription1, $subscription);
     }

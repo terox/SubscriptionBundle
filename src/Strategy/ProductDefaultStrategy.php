@@ -22,25 +22,20 @@ class ProductDefaultStrategy extends AbstractProductStrategy
             $this->checkQuote($product);
 
             return $product;
-        }
 
-        catch(ProductIntegrityException $exception) {
+        } catch (ProductIntegrityException $exception) {
 
             $this->getLogger()->error('Product integrity: {message}', [
                 'message' => $exception->getMessage()
             ]);
 
-        }
-
-        catch(ProductExpiredException $exception) {
+        } catch (ProductExpiredException $exception) {
 
             $this->getLogger()->error('Product is expired: {message}', [
                 'message' => $exception->getMessage()
             ]);
 
-        }
-
-        catch(ProductQuoteExceededException $exception) {
+        } catch (ProductQuoteExceededException $exception) {
 
             $this->getLogger()->error('Product quota is exceeded: {message}', [
                 'message' => $exception->getMessage()
@@ -62,7 +57,7 @@ class ProductDefaultStrategy extends AbstractProductStrategy
     {
         $defaultProduct = $this->getProductRepository()->findDefault();
 
-        if(null !== $defaultProduct) {
+        if (null !== $defaultProduct) {
             return $defaultProduct;
         }
 

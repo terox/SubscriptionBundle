@@ -19,29 +19,29 @@ class SubscriptionEndLastStrategy extends AbstractSubscriptionStrategy
      */
     public function createSubscription(ProductInterface $product, array $subscriptions = [])
     {
-        if(empty($subscriptions)) {
+        if (empty($subscriptions)) {
             return $this->create($this->createCurrentDate(), $product);
         }
 
         $startDate = null;
-        foreach($subscriptions as $subscription) {
+        foreach ($subscriptions as $subscription) {
 
             // Subscription is permanent, don't continue
-            if(null === $subscription->getEndDate()) {
+            if (null === $subscription->getEndDate()) {
                 $startDate = null;
                 break;
             }
 
             // Catch the subscription with higher end date
-            if(null === $startDate || $startDate < $subscription->getEndDate()) {
+            if (null === $startDate || $startDate < $subscription->getEndDate()) {
                 $startDate = $subscription->getEndDate();
             }
         }
 
         // It's a permanent subscription
-        if(null === $startDate) {
+        if (null === $startDate) {
 
-            if(count($subscriptions) > 1) {
+            if (count($subscriptions) > 1) {
                 throw new PermanentSubscriptionException('More than one subscription per product is not allowed when there is a permanent enabled.');
             }
 
@@ -49,12 +49,12 @@ class SubscriptionEndLastStrategy extends AbstractSubscriptionStrategy
         }
 
         // Check if subscription is expired
-        if(time() > $startDate->getTimestamp()) {
+        if (time() > $startDate->getTimestamp()) {
             $startDate = $this->createCurrentDate();
         }
 
         // Date should use the \DateTimeImmutable (a little fix)
-        if(!$startDate instanceof \DateTimeImmutable) {
+        if (!$startDate instanceof \DateTimeImmutable) {
             $startDate = (new \DateTimeImmutable())->setTimestamp($startDate->getTimestamp());
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Terox\SubscriptionBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
@@ -6,10 +7,10 @@ use Terox\SubscriptionBundle\Model\SubscriptionInterface;
 
 class SubscriptionEvent extends Event
 {
-    const ACTIVATE_SUBSCRIPTION  = 'terox.subscription.activate';
-    const RENEW_SUBSCRIPTION     = 'terox.subscription.renew';
-    const EXPIRE_SUBSCRIPTION    = 'terox.subscription.expire';
-    const DISABLE_SUBSCRIPTION   = 'terox.subscription.disable';
+    const ACTIVATE_SUBSCRIPTION = 'terox.subscription.activate';
+    const RENEW_SUBSCRIPTION    = 'terox.subscription.renew';
+    const EXPIRE_SUBSCRIPTION   = 'terox.subscription.expire';
+    const DISABLE_SUBSCRIPTION  = 'terox.subscription.disable';
 
     /**
      * @var SubscriptionInterface

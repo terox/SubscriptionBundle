@@ -78,7 +78,7 @@ abstract class AbstractProductStrategy implements ProductStrategyInterface
      */
     final public function checkProductIntegrity(ProductInterface $product)
     {
-        if($product->isDefault() && null !== $product->getQuota()) {
+        if ($product->isDefault() && null !== $product->getQuota()) {
 
             throw new ProductIntegrityException(sprintf(
                 'The product "%s" is a default product with a quota (%s). Default products can not have a quote value.',
@@ -88,7 +88,7 @@ abstract class AbstractProductStrategy implements ProductStrategyInterface
 
         }
 
-        if($product->isDefault() && null !== $product->getExpirationDate()) {
+        if ($product->isDefault() && null !== $product->getExpirationDate()) {
 
             throw new ProductIntegrityException(sprintf(
                 'The product "%s" is a default product with expiration date (%s). Default products can not have a expiration date.',
@@ -131,14 +131,14 @@ abstract class AbstractProductStrategy implements ProductStrategyInterface
     public function checkQuote(ProductInterface $product)
     {
         // Unlimited quote
-        if(null === $product->getQuota()) {
+        if (null === $product->getQuota()) {
             return;
         }
 
         // Calculate the current quote
         $currentQuote = $this->subscriptionRepository->getNumberOfSubscriptionsByProducts($product);
 
-        if($currentQuote < $product->getQuota()) {
+        if ($currentQuote < $product->getQuota()) {
             return;
         }
 

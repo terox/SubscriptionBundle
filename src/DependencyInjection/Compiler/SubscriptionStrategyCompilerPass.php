@@ -17,15 +17,15 @@ class SubscriptionStrategyCompilerPass implements CompilerPassInterface
         $strategyServiceIds = array_keys($container->findTaggedServiceIds('subscription.strategy'));
 
         // Add subscription strategies to factory instance
-        foreach($strategyServiceIds as $strategyServiceId) {
+        foreach ($strategyServiceIds as $strategyServiceId) {
             $strategy = $container->findDefinition($strategyServiceId);
             $tag      = $strategy->getTag('subscription.strategy');
 
-            if('subscription' !== $tag[0]['type']) {
+            if ('subscription' !== $tag[0]['type']) {
                 continue;
             }
 
-            $factory->addMethodCall('addStrategy', [ new Reference($strategyServiceId), $tag[0]['strategy'] ]);
+            $factory->addMethodCall('addStrategy', [new Reference($strategyServiceId), $tag[0]['strategy']]);
         }
     }
 }

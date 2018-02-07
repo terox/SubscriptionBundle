@@ -20,9 +20,9 @@ interface SubscriptionRepositoryInterface
      * Find subscriptions by product and state.
      *
      * @param ProductInterface $product
-     * @param boolean          $enabled
+     * @param boolean          $active
      *
      * @return SubscriptionInterface[]
      */
-    public function findByProduct(ProductInterface $product, $enabled = true);
+    public function findByProduct(ProductInterface $product, $active = true);
 }

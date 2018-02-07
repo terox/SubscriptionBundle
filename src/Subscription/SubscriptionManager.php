@@ -40,10 +40,10 @@ class SubscriptionManager
     /**
      * Constructor.
      *
-     * @param SubscriptionRegistry            $registry                Registry of strategies
-     * @param SubscriptionRepositoryInterface $subscriptionRepository  Subscription repository
-     * @param EventDispatcherInterface        $eventDispatcher         Event Dispatcher
-     * @param array                           $config                  Bundle configuration
+     * @param SubscriptionRegistry            $registry               Registry of strategies
+     * @param SubscriptionRepositoryInterface $subscriptionRepository Subscription repository
+     * @param EventDispatcherInterface        $eventDispatcher        Event Dispatcher
+     * @param array                           $config                 Bundle configuration
      */
     public function __construct(
         SubscriptionRegistry $registry,
@@ -80,7 +80,7 @@ class SubscriptionManager
         $subscriptions = $this->subscriptionRepository->findByProduct($product);
 
         // Check that subscriptions collection are a valid objects
-        foreach($subscriptions as $activeSubscription) {
+        foreach ($subscriptions as $activeSubscription) {
             $this->checkSubscriptionIntegrity($activeSubscription);
         }
 
@@ -178,7 +178,7 @@ class SubscriptionManager
      * Expire subscription.
      *
      * @param SubscriptionInterface $subscription
-     * @param string                $reason         The reason codename that you want set into the subscription
+     * @param string                $reason The reason codename that you want set into the subscription
      * @param boolean               $isRenew
      */
     public function expire(SubscriptionInterface $subscription, $reason = 'expire', $isRenew = false)
@@ -247,7 +247,7 @@ class SubscriptionManager
      */
     private function checkSubscriptionRenewable(SubscriptionInterface $subscription)
     {
-        if(null === $subscription->getEndDate()) {
+        if (null === $subscription->getEndDate()) {
             throw new SubscriptionRenewalException('A permanent subscription can not be renewed.');
         }
 

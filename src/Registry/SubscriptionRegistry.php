@@ -38,7 +38,7 @@ class SubscriptionRegistry
      */
     public function addStrategy(SubscriptionStrategyInterface $strategy, $name)
     {
-        if(array_key_exists($name, $this->strategies)) {
+        if (array_key_exists($name, $this->strategies)) {
             throw new \InvalidArgumentException(sprintf('The strategy %s is already a registered strategy.', $name));
         }
 
@@ -58,7 +58,7 @@ class SubscriptionRegistry
      */
     public function get($name)
     {
-        if(!array_key_exists($name, $this->strategies)) {
+        if (!array_key_exists($name, $this->strategies)) {
             throw new StrategyNotFoundException(sprintf('The strategy "%s" does not exist in the registry', $name));
         }
 

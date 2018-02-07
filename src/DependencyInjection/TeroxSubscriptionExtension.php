@@ -21,7 +21,7 @@ class TeroxSubscriptionExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        $config        = $this->processConfiguration($configuration, $configs);
         $container->setParameter(TeroxSubscriptionBundle::BUNDLE_NAMESPACE.'.config', $config);
         $container->setParameter(TeroxSubscriptionBundle::BUNDLE_NAMESPACE.'.config.subscription.class', $config['subscription_class']);
         $container->setParameter(TeroxSubscriptionBundle::BUNDLE_NAMESPACE.'.config.subscription.repository', $config['subscription_repository']);

@@ -24,9 +24,9 @@ abstract class AbstractTestCaseBase extends TestCase
      * @var Logger
      */
     protected $logger;
-    
+
     protected $productRepository;
-    
+
     /**
      * @var SubscriptionRepositoryInterface
      */
@@ -56,20 +56,20 @@ abstract class AbstractTestCaseBase extends TestCase
      * @var SubscriptionInterface
      */
     protected $permanentSubscription;
-    
+
     protected $defaultProductStrategy;
-    
+
     protected $product;
-    
+
     public function setUp()
     {
         // Logger
         $this->logger = \Mockery::mock(Logger::class);
         $this->logger->shouldReceive('error');
-        
+
         // Product repository
-        $this->productRepository = \Mockery::mock(ProductRepositoryInterface::class); 
-        
+        $this->productRepository = \Mockery::mock(ProductRepositoryInterface::class);
+
         // Subscription repository
         $this->subscriptionRepository = \Mockery::mock(SubscriptionRepositoryInterface::class);
 
