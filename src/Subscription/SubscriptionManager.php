@@ -3,6 +3,7 @@
 namespace Terox\SubscriptionBundle\Subscription;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Terox\SubscriptionBundle\Event\SubscriptionEvent;
 use Terox\SubscriptionBundle\Exception\PermanentSubscriptionException;
 use Terox\SubscriptionBundle\Exception\ProductDefaultNotFoundException;
@@ -62,6 +63,7 @@ class SubscriptionManager
      * Create a new subscription with a determinate strategy.
      *
      * @param ProductInterface $product      Product that you want associate with subscription
+     * @param UserInterface    $user         User to associate to subscription
      * @param string           $strategyName If you keep this null it will use product default strategy
      *
      * @return SubscriptionInterface
@@ -70,14 +72,14 @@ class SubscriptionManager
      * @throws SubscriptionIntegrityException
      * @throws PermanentSubscriptionException
      */
-    public function create(ProductInterface $product, $strategyName = null)
+    public function create(ProductInterface $product, UserInterface $user, $strategyName = null)
     {
         // Get strategy
         $strategyName = $strategyName ?? $product->getStrategyCodeName();
         $strategy     = $this->registry->get($strategyName);
 
         // Get current enabled subscriptions of product
-        $subscriptions = $this->subscriptionRepository->findByProduct($product);
+        $subscriptions = $this->subscriptionRepository->findByProduct($product, $user);
 
         // Check that subscriptions collection are a valid objects
         foreach ($subscriptions as $activeSubscription) {
@@ -86,6 +88,7 @@ class SubscriptionManager
 
         $subscription = $strategy->createSubscription($product, $subscriptions);
         $subscription->setStrategy($strategyName);
+        $subscription->setUser($user);
 
         return $subscription;
     }
@@ -145,8 +148,7 @@ class SubscriptionManager
         $finalProduct   = $strategy->getProductStrategy()->getFinalProduct($renewalProduct);
 
         // Create new subscription (following the way of expired subscription)
-        $newSubscription = $this->create($finalProduct, $finalProduct->getStrategyCodeName());
-        $newSubscription->setUser($subscription->getUser());
+        $newSubscription = $this->create($finalProduct, $subscription->getUser(), $finalProduct->getStrategyCodeName());
         $newSubscription->setAutoRenewal(true);
 
         // Activate the next subscription

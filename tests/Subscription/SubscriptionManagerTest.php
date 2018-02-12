@@ -59,77 +59,53 @@ class SubscriptionManagerTest extends AbstractTestCaseBase
 
     public function testConcatNewSubscriptionWithPrevious()
     {
-        $this->currentSubscription1->shouldReceive('getProduct')->andReturn($this->product);
-
-        $this->subscriptionRepository->shouldReceive('findByProduct')->andReturn([
-            $this->currentSubscription1
-        ]);
-
-        // Create new subscription
-        $subscription = $this->subscriptionManager->create($this->product, 'end_last');
+        $subscription = $this->subscriptionManager->create($this->product, $this->user1);
 
         $this->assertEquals(
-            $this->subscription1EndDate->modify('+30 days')->getTimestamp(),
-            $subscription->getEndDate()->getTimestamp()
+            $this->subscription1EndDate->modify('+45 days')->getTimestamp(),
+            $subscription->getEndDate()->getTimestamp(),
+            sprintf('Expected %s => %s',
+                $this->subscription1EndDate->modify('+45 days')->format('Y-m-d H:i:s'),
+                $subscription->getEndDate()->format('Y-m-d H:i:s')
+            )
         );
 
+        $this->assertEquals($this->user1, $subscription->getUser());
         $this->assertEquals(false, $subscription->isAutoRenewal());
     }
 
     public function testConcatNewSubscriptionWithOverlapedSubscriptions()
     {
-        $this->currentSubscription2->shouldReceive('getProduct')->andReturn($this->product);
-        $this->currentSubscription3->shouldReceive('getProduct')->andReturn($this->product);
-        $this->currentSubscription3->shouldReceive('getUser')->andReturn(new UserMock());
-
-        $this->subscriptionRepository->shouldReceive('findByProduct')->andReturn([
-            $this->currentSubscription2,
-            $this->currentSubscription3
-        ]);
-
-        // Create new subscription
-        $subscription = $this->subscriptionManager->create($this->product, 'end_last');
+        $subscription = $this->subscriptionManager->create($this->product, $this->user2);
 
         $this->assertEquals(
-            $this->subscription1EndDate->modify('+40 days')->getTimestamp(),
+            $this->subscription2EndDate->modify('+37 days')->getTimestamp(),
             $subscription->getEndDate()->getTimestamp(),
             sprintf('Expected %s => %s',
-                $this->subscription1EndDate->modify('+40 days')->format('Y-m-d H:i:s'),
+                $this->subscription2EndDate->modify('+37 days')->format('Y-m-d H:i:s'),
                 $subscription->getEndDate()->format('Y-m-d H:i:s')
             )
         );
 
+        $this->assertEquals($this->user2, $subscription->getUser());
         $this->assertEquals(false, $subscription->isAutoRenewal());
     }
 
     public function testSameSubscriptionOnPermanentSubscription()
     {
-        $this->permanentSubscription->shouldReceive('getProduct')->andReturn($this->product);
-
-        $this->subscriptionRepository->shouldReceive('findByProduct')->andReturn([
-            $this->permanentSubscription
-        ]);
-
-        $subscription = $this->subscriptionManager->create($this->product, 'end_last');
+        $subscription = $this->subscriptionManager->create($this->product, $this->user3);
 
         $this->assertInstanceOf(SubscriptionInterface::class, $subscription);
         $this->assertEquals(null, $subscription->getEndDate());
         $this->assertEquals($this->permanentSubscription, $subscription);
+        $this->assertEquals($this->user3, $subscription->getUser());
     }
 
     public function testSameSubscriptionOnPermanentWithFiniteSubscriptions()
     {
-        $this->currentSubscription1->shouldReceive('getProduct')->andReturn($this->product);
-        $this->permanentSubscription->shouldReceive('getProduct')->andReturn($this->product);
-
-        $this->subscriptionRepository->shouldReceive('findByProduct')->andReturn([
-            $this->permanentSubscription,
-            $this->currentSubscription1,
-        ]);
-
         $this->expectException(PermanentSubscriptionException::class);
 
-        $this->subscriptionManager->create($this->product, 'end_last');
+        $this->subscriptionManager->create($this->product, $this->user4);
     }
 
     public function testActivateSubscriptionWithValidProduct()

@@ -42,7 +42,10 @@ class SubscriptionEndLastStrategy extends AbstractSubscriptionStrategy
         if (null === $startDate) {
 
             if (count($subscriptions) > 1) {
-                throw new PermanentSubscriptionException('More than one subscription per product is not allowed when there is a permanent enabled.');
+                throw new PermanentSubscriptionException(
+                    'More than one subscription per product is not allowed when there is a permanent subscription 
+                    enabled. Maybe you are mixing different strategies?'
+                );
             }
 
             return $subscriptions[0];

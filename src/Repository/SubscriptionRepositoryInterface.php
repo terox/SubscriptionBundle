@@ -2,6 +2,7 @@
 
 namespace Terox\SubscriptionBundle\Repository;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Terox\SubscriptionBundle\Model\ProductInterface;
 use Terox\SubscriptionBundle\Model\SubscriptionInterface;
 
@@ -20,9 +21,10 @@ interface SubscriptionRepositoryInterface
      * Find subscriptions by product and state.
      *
      * @param ProductInterface $product
+     * @param UserInterface    $user
      * @param boolean          $active
      *
      * @return SubscriptionInterface[]
      */
-    public function findByProduct(ProductInterface $product, $active = true);
+    public function findByProduct(ProductInterface $product, UserInterface $user, $active = true);
 }
