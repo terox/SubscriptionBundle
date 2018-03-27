@@ -27,4 +27,13 @@ interface SubscriptionRepositoryInterface
      * @return SubscriptionInterface[]
      */
     public function findByProduct(ProductInterface $product, UserInterface $user, $active = true);
+
+    /**
+     * Find subscription by his ID.
+     *
+     * @param int|string $id
+     *
+     * @return SubscriptionInterface|null
+     */
+    public function findById($id);
 }
