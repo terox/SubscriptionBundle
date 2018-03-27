@@ -22,10 +22,10 @@ class TeroxSubscriptionExtension extends Extension
     {
         $configuration = new Configuration();
         $config        = $this->processConfiguration($configuration, $configs);
-        $container->setParameter(TeroxSubscriptionBundle::BUNDLE_NAMESPACE.'.config', $config);
-        $container->setParameter(TeroxSubscriptionBundle::BUNDLE_NAMESPACE.'.config.subscription.class', $config['subscription_class']);
-        $container->setParameter(TeroxSubscriptionBundle::BUNDLE_NAMESPACE.'.config.subscription.repository', $config['subscription_repository']);
-        $container->setParameter(TeroxSubscriptionBundle::BUNDLE_NAMESPACE.'.config.product.repository', $config['product_repository']);
+        $container->setParameter('terox_subscription.config', $config);
+        $container->setParameter('terox_subscription.config.subscription.class', $config['subscription_class']);
+        $container->setParameter('terox_subscription.config.subscription.repository', $config['subscription_repository']);
+        $container->setParameter('terox_subscription.config.product.repository', $config['product_repository']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

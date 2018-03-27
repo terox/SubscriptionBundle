@@ -9,8 +9,6 @@ use Terox\SubscriptionBundle\DependencyInjection\Compiler\SubscriptionStrategyCo
 
 class TeroxSubscriptionBundle extends Bundle
 {
-    const BUNDLE_NAMESPACE = 'terox_subscription';
-
     /**
      *{@inheritdoc}
      */

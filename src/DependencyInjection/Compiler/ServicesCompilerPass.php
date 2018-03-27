@@ -13,11 +13,10 @@ class ServicesCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $namespace              = TeroxSubscriptionBundle::BUNDLE_NAMESPACE;
-        $productRepository      = $container->getParameter($namespace.'.config.product.repository');
-        $subscriptionRepository = $container->getParameter($namespace.'.config.subscription.repository');
+        $productRepository      = $container->getParameter('terox_subscription.config.product.repository');
+        $subscriptionRepository = $container->getParameter('terox_subscription.config.subscription.repository');
 
-        $container->setAlias(str_replace('_', '.', $namespace).'.repository.product', $productRepository);
-        $container->setAlias(str_replace('_', '.', $namespace).'.repository.subscription', $subscriptionRepository);
+        $container->setAlias(str_replace('_', '.', 'terox_subscription').'.repository.product', $productRepository);
+        $container->setAlias(str_replace('_', '.', 'terox_subscription').'.repository.subscription', $subscriptionRepository);
     }
 }
