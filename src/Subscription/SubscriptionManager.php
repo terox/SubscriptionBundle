@@ -5,6 +5,7 @@ namespace Terox\SubscriptionBundle\Subscription;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Terox\SubscriptionBundle\Event\SubscriptionEvent;
+use Terox\SubscriptionBundle\Event\SubscriptionEvents;
 use Terox\SubscriptionBundle\Exception\PermanentSubscriptionException;
 use Terox\SubscriptionBundle\Exception\ProductDefaultNotFoundException;
 use Terox\SubscriptionBundle\Exception\StrategyNotFoundException;
@@ -116,7 +117,7 @@ class SubscriptionManager
         $subscription->activate();
 
         $subscriptionEvent = new SubscriptionEvent($subscription, $isRenew);
-        $this->eventDispatcher->dispatch(SubscriptionEvent::ACTIVATE_SUBSCRIPTION, $subscriptionEvent);
+        $this->eventDispatcher->dispatch(SubscriptionEvents::ACTIVATE_SUBSCRIPTION, $subscriptionEvent);
     }
 
     /**
@@ -155,7 +156,7 @@ class SubscriptionManager
         $this->activate($newSubscription, true);
 
         $subscriptionEvent = new SubscriptionEvent($newSubscription);
-        $this->eventDispatcher->dispatch(SubscriptionEvent::RENEW_SUBSCRIPTION, $subscriptionEvent);
+        $this->eventDispatcher->dispatch(SubscriptionEvents::RENEW_SUBSCRIPTION, $subscriptionEvent);
 
         return $newSubscription;
     }
@@ -189,7 +190,7 @@ class SubscriptionManager
         $subscription->deactivate();
 
         $subscriptionEvent = new SubscriptionEvent($subscription, $isRenew);
-        $this->eventDispatcher->dispatch(SubscriptionEvent::EXPIRE_SUBSCRIPTION, $subscriptionEvent);
+        $this->eventDispatcher->dispatch(SubscriptionEvents::EXPIRE_SUBSCRIPTION, $subscriptionEvent);
     }
 
     /**
@@ -203,7 +204,7 @@ class SubscriptionManager
         $subscription->deactivate();
 
         $subscriptionEvent = new SubscriptionEvent($subscription);
-        $this->eventDispatcher->dispatch(SubscriptionEvent::DISABLE_SUBSCRIPTION, $subscriptionEvent);
+        $this->eventDispatcher->dispatch(SubscriptionEvents::DISABLE_SUBSCRIPTION, $subscriptionEvent);
     }
 
     /**
