@@ -51,7 +51,7 @@ Quick start
 $ composer require terox/subscription-bundle
 ```
 
-### 2. Enable the bundle in Symfony Application (only Symfony 3):
+### 2. Enable the bundle in Symfony Application (only Symfony 3+):
 
 ```php
 <?php
